@@ -6,30 +6,30 @@ import "strings"
 const (
 	BalanceKey = "eth_balance"
 
-	//currentChallengeKey DB Key
-	currentChallengeKey = "current_challenge"
-	RequestIDkey        = "current_request_id"
-	RequestIDkey0       = "current_request_id0"
-	RequestIDkey1       = "current_request_id1"
-	RequestIDkey2       = "current_request_id2"
-	RequestIDkey3       = "current_request_id3"
-	RequestIDkey4       = "current_request_id4"
-	DifficultIdKey      = "current_difficulty"
+	//CurrentChallengeKey DB key
+	CurrentChallengeKey = "current_challenge"
+	RequestIdKey        = "current_requestId"
+	RequestIdKey0       = "current_requestId0"
+	RequestIdKey1       = "current_requestId1"
+	RequestIdKey2       = "current_requestId2"
+	RequestIdKey3       = "current_requestId3"
+	RequestIdKey4       = "current_requestId4"
+	DifficultyKey       = "current_difficulty"
 	QueryStringKey      = "current_query_string"
 	GranularityKey      = "current_granularity"
 	TotalTipKey         = "current_total_tip"
 	MiningStatusKey     = "mining_status"
 
 	//GasKey
-	GasKEy = "wei_gas_price"
+	GasKey = "wei_gas_price"
 
-	///Top50
+	//Top 50
 	Top50Key = "top_50_requestIds"
 
-	// TokenBalance
+	//TokenBalance
 	TokenBalanceKey = "token_balance"
 
-	// Dispute Status
+	//Dispute Status
 	DisputeStatusKey = "dispute_status"
 
 	//RequestID's are stored with this prefix and the id itself
@@ -46,35 +46,36 @@ const (
 var knownKeys map[string]bool
 
 func initKeyLook() {
-	knownKeys = make(map[string]bool)
-	knownKeys[BalanceKey] = true
-	knownKeys[currentChallengeKey] = true
-	knownKeys[RequestIDkey] = true
-	knownKeys[RequestIDkey0] = true
-	knownKeys[RequestIDkey1] = true
-	knownKeys[RequestIDkey2] = true
-	knownKeys[RequestIDkey3] = true
-	knownKeys[RequestIDkey4] = true
-	knownKeys[DifficultIdKey] = true
-	knownKeys[QueryStringKey] = true
-	knownKeys[GranularityKey] = true
-	knownKeys[TotalTipKey] = true
-	knownKeys[MiningStatusKey] = true
-	knownKeys[GasKEy] = true
-	knownKeys[Top50Key] = true
-	knownKeys[TokenBalanceKey] = true
-	knownKeys[DisputeStatusKey] = true
-	knownKeys[LastNewValueKey] = true
-	knownKeys[LastSubmissionKey] = true
-	knownKeys[TimeOutKey] = true
+	knownKeys = map[string]bool{
+		BalanceKey:          true,
+		CurrentChallengeKey: true,
+		RequestIdKey:        true,
+		RequestIdKey0:       true,
+		RequestIdKey1:       true,
+		RequestIdKey2:       true,
+		RequestIdKey3:       true,
+		RequestIdKey4:       true,
+		DifficultyKey:       true,
+		QueryStringKey:      true,
+		GranularityKey:      true,
+		TotalTipKey:         true,
+		MiningStatusKey:     true,
+		GasKey:              true,
+		Top50Key:            true,
+		TokenBalanceKey:     true,
+		DisputeStatusKey:    true,
+		LastNewValueKey:     true,
+		LastSubmissionKey:   true,
+		TimeOutKey:          true,
+	}
 }
-
 func isKnownKey(key string) bool {
 	if knownKeys == nil {
 		initKeyLook()
 	}
 	if !knownKeys[key] {
-		if !strings.HasPrefix(key, QueryMetadataPrefix) && !strings.HasPrefix(key, QueriedValuePrefix) {
+		if !strings.HasPrefix(key, QueryMetadataPrefix) &&
+			!strings.HasPrefix(key, QueriedValuePrefix) {
 			return false
 		}
 	}
