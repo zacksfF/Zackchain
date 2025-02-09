@@ -64,7 +64,7 @@ func (w *window) CloseTwo(at time.Time) (before, after *PriceStamp) {
 	return
 }
 
-func (w *window) WithRange(at time.Time, delta time.Duration) []*PriceStamp {
+func (w *window) WithinRange(at time.Time, delta time.Duration) []*PriceStamp {
 	var items []*PriceStamp
 	i := 0
 	for i < w.num {

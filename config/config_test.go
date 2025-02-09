@@ -26,3 +26,4 @@ func TestConfig(t *testing.T) {
 		t.Fatal("ContractAddress is empty")
 	}
 }
+
